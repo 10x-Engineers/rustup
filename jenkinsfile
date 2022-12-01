@@ -20,7 +20,7 @@ node ("x86_runner2"){
         sh'''#!/bin/bash
             export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
             export CARGO_HOME=$HOME/RUST_BUILD_JOB
-            export PATH="$PATH:$HOME/RUST_BUILD_JOB/cargo/bin"
+            export PATH="$PATH:$HOME/RUST_BUILD_JOB/bin"
             rustup target add riscv64gc-unknown-linux-gnu
         '''
     }
@@ -50,7 +50,7 @@ node ("riscv64_runner1"){
         sh'''#!/bin/bash
             export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
             export CARGO_HOME=$HOME/RUST_BUILD_JOB
-            export PATH="$PATH:$HOME/RUST_BUILD_JOB/cargo/bin"
+            export PATH="$PATH:$HOME/RUST_BUILD_JOB/bin"
             rustup target add riscv64gc-unknown-linux-gnu
         '''
     }
