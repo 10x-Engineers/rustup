@@ -22,7 +22,9 @@ node ("x86_runner2"){
             rustup target add riscv64gc-unknown-linux-gnu
         '''
     }
-
+    stage('Cleanup'){
+        cleanWs()
+    }
 }
 node ("riscv64_runner1"){
     stage('Cleanup'){
@@ -47,5 +49,8 @@ node ("riscv64_runner1"){
             export PATH="$PATH:$HOME/RUST_BUILD_JOB/cargo/bin"
             rustup target add riscv64gc-unknown-linux-gnu
         '''
+    }
+    stage('Cleanup'){
+        cleanWs()
     }
 }
