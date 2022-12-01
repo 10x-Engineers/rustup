@@ -1,6 +1,6 @@
 node ("x86_runner2"){
     stage('Cleanup'){
-		sh'''
+		sh'''#!/bin/bash
 			rm -rf $HOME/RUST_BUILD_JOB
 		'''
         cleanWs()
@@ -28,7 +28,7 @@ node ("x86_runner2"){
         '''
     }
     stage('Cleanup'){
-		sh'''
+		sh'''#!/bin/bash
 			rm -rf $HOME/RUST_BUILD_JOB
 		'''
         cleanWs()
@@ -36,7 +36,7 @@ node ("x86_runner2"){
 }
 node ("riscv64_runner1"){
     stage('Cleanup'){
-		sh'''
+		sh'''#!/bin/bash
 			rm -rf $HOME/RUST_BUILD_JOB
 		'''
         cleanWs()
@@ -64,7 +64,7 @@ node ("riscv64_runner1"){
         '''
     }
     stage('Cleanup'){
-		sh'''
+		sh'''#!/bin/bash
 			rm -rf $HOME/RUST_BUILD_JOB
 		'''
         cleanWs()
