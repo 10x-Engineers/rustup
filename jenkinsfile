@@ -1,5 +1,6 @@
 node ("x86_runner2"){
     stage('Cleanup'){
+		rm -rf $HOME/RUST_BUILD_JOB
         cleanWs()
     }
     stage('60s Sleep'){
@@ -25,11 +26,13 @@ node ("x86_runner2"){
         '''
     }
     stage('Cleanup'){
+		rm -rf $HOME/RUST_BUILD_JOB
         cleanWs()
     }
 }
 node ("riscv64_runner1"){
     stage('Cleanup'){
+		rm -rf $HOME/RUST_BUILD_JOB
         cleanWs()
     }
     stage('60s Sleep'){
@@ -55,6 +58,7 @@ node ("riscv64_runner1"){
         '''
     }
     stage('Cleanup'){
+		rm -rf $HOME/RUST_BUILD_JOB
         cleanWs()
     }
 }
