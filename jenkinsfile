@@ -1,0 +1,51 @@
+node ("x86_runner2"){
+    stage('Cleanup'){
+        cleanWs()
+    }
+    stage('60s Sleep'){
+        sleep(time:60, unit:'SECONDS')
+    }
+    stage('Checkout x86'){
+        checkout scm
+    }
+    stage('Build x86'){
+        sh'''
+            mkdir -p ~/RUST_BUILD_JOB
+            export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
+            export CARGO_HOME=$HOME/RUST_BUILD_JOB
+            sh rustup-init.sh -y
+        '''
+    }
+    stage ('Add RISC-V x86'){
+        sh'''#!/bin/bash
+            export PATH="$PATH:$HOME/RUST_BUILD_JOB/cargo/bin"
+            rustup target add riscv64gc-unknown-linux-gnu
+        '''
+    }
+
+}
+node ("riscv64_runner1"){
+    stage('Cleanup'){
+        cleanWs()
+    }
+    stage('60s Sleep'){
+        sleep(time:60, unit:'SECONDS')
+    }
+    stage('Checkout QEMU Linux'){
+        checkout scm
+    }
+    stage('Build QEMU Linux'){
+        sh'''
+            mkdir -p ~/RUST_BUILD_JOB
+            export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
+            export CARGO_HOME=$HOME/RUST_BUILD_JOB
+            sh rustup-init.sh -y
+        '''
+    }
+    stage ('Add RISC-V QEMU Linux'){
+        sh'''#!/bin/bash
+            export PATH="$PATH:$HOME/RUST_BUILD_JOB/cargo/bin"
+            rustup target add riscv64gc-unknown-linux-gnu
+        '''
+    }
+}
