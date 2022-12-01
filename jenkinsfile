@@ -21,7 +21,7 @@ node ("x86_runner2"){
             export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
             export CARGO_HOME=$HOME/RUST_BUILD_JOB
             export PATH="$PATH:$HOME/RUST_BUILD_JOB/bin"
-            rustup target add riscv64gc-unknown-linux-gnu
+            rustup target add arm-linux-androideabi
         '''
     }
     stage('Cleanup'){
@@ -51,7 +51,7 @@ node ("riscv64_runner1"){
             export RUSTUP_HOME=$HOME/RUST_BUILD_JOB
             export CARGO_HOME=$HOME/RUST_BUILD_JOB
             export PATH="$PATH:$HOME/RUST_BUILD_JOB/bin"
-            rustup target add riscv64gc-unknown-linux-gnu
+            rustup target add arm-linux-androideabi
         '''
     }
     stage('Cleanup'){
